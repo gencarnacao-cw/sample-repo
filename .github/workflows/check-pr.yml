@@ -1,0 +1,17 @@
+name: Check PR title contains Jira issue ID
+on:
+  pull_request:
+    types: [synchronize, opened, reopened, edited]
+
+jobs:
+  check-pr-title:
+    runs-on: ubuntu-latest
+    name: A job to check the PR has a nice name
+    steps:
+      - name: Trigger CircleCI Pipeline
+        id: pr-name-checker
+        uses: gencarnacao/test-action@1.0.0
+        with:
+          some-var: "foobar"
+      - name: Peek the output
+        run: echo "Output was ${{ steps.pr-name-checker.outputs.out-var }}"
