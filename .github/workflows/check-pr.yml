@@ -6,17 +6,8 @@ on:
 jobs:
   check-pr-title:
     runs-on: ubuntu-latest
-    name: A job to check the PR has a nice name
+    name: Pull request validations
     steps:
-      - name: Dump github context
-        run: echo "$GITHUB_CONTEXT"
-        shell: bash
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-      - name: Trigger CircleCI Pipeline
+      - name: Check pull request title
         id: pr-name-checker
-        uses: gencarnacao-cw/test-action@1.0.5
-        with:
-          some-var: "foobar"
-      - name: Peek the output
-        run: echo "Output was ${{ steps.pr-name-checker.outputs.out-var }}"
+        uses: gencarnacao-cw/test-action@1.0.6
