@@ -10,6 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - id: foo
-        uses: gencarnacao-cw/test-action@v3
+        uses: gencarnacao-cw/test-action@v4
         with:
           context: ${{ toJSON(github) }}
