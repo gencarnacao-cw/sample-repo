@@ -9,9 +9,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - id: foo
-        uses: gencarnacao-cw/test-action@v1
+        uses: gencarnacao-cw/test-action@v2
         with:
           who-to-greet: 'Mona the Octocat'
+          github-context: ${{ github.context }}
       - run: echo random-number "$RANDOM_NUMBER"
         shell: bash
         env:
