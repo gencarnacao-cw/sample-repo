@@ -12,7 +12,7 @@ jobs:
       - id: foo
         uses: gencarnacao-cw/test-action@v2
         with:
-          who-to-greet: ${{ toJSON(github).pull_request) }}
+          who-to-greet: ${{ toJSON(github).pull_request }}
           github-context: ${{ github.context }}
       - run: echo random-number "$RANDOM_NUMBER"
         shell: bash
