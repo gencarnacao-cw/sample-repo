@@ -8,6 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to check the PR has a nice name
     steps:
+      - name: Dump github context
+        run: echo "$GITHUB_CONTEXT"
+        shell: bash
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
       - name: Trigger CircleCI Pipeline
         id: pr-name-checker
         uses: gencarnacao-cw/test-action@1.0.4
