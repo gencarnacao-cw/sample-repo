@@ -11,7 +11,7 @@ jobs:
       - id: foo
         uses: gencarnacao-cw/test-action@v2
         with:
-          who-to-greet: 'Mona the Octocat'
+          who-to-greet: ${GITHUB_CONTEXT}
           github-context: ${{ github.context }}
       - run: echo random-number "$RANDOM_NUMBER"
         shell: bash
