@@ -10,11 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - id: foo
-        uses: gencarnacao-cw/test-action@v2
+        uses: gencarnacao-cw/test-action@v3
         with:
-          who-to-greet: ${{ toJSON(github).pull_request }}
-          github-context: ${{ github.context }}
-      - run: echo random-number "$RANDOM_NUMBER"
-        shell: bash
-        env:
-          RANDOM_NUMBER: ${{ steps.foo.outputs.random-number }}
+          context: ${{ toJSON(github) }}
