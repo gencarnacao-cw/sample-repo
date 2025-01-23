@@ -10,4 +10,4 @@ jobs:
     steps:
       - name: Check pull request title
         id: pr-name-checker
-        uses: gencarnacao-cw/test-action@1.0.14
+        uses: gencarnacao-cw/test-action@1.0.15
