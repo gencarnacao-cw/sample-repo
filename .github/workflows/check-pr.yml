@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Trigger CircleCI Pipeline
         id: pr-name-checker
-        uses: gencarnacao-cw/test-action@1.0.0
+        uses: gencarnacao-cw/test-action@1.0.1
         with:
           some-var: "foobar"
       - name: Peek the output
