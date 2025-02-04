@@ -18,6 +18,8 @@ jobs:
       if: ${{ github.event_name == 'pull_request' }}
       steps:
         - name: Print the PR title
-          run: echo ${{ github.event.pull_request.title }} | grep -o "GRUB-\d\{4,5\}"
+          run: |
+            echo ${{ github.event.pull_request.title }} | grep -o "GRUB-\d\{4,5\}"
+            if [[ $? == 1]]; then echo ":error: PR Title does not include JIRA issue number!" fi
 
 
