@@ -8,7 +8,7 @@ jobs:
       runs-on: ubuntu-latest
       if: ${{ github.event_name == 'pull_request' }}
       steps:
-        - name: Print the PR title
+        - name: Check PR title for Jira issue number
           run: |
             set +e
             JIRA=$(printf '%q' ${{ github.event.pull_request.title }} | grep -o "GRUB-[0-9]\{4,5\}")
