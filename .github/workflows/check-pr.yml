@@ -1,22 +1,20 @@
-name: Check PR title contains Jira issue ID
+name: Validate pull request title
 on:
   pull_request:
-    types: [synchronize, opened, reopened, edited]
+    types: [opened, edited]
 
 jobs:
-  hello_world_job:
-    runs-on: ubuntu-latest
-    name: A job to say hello
-    steps:
-      - uses: actions/checkout@v4
-      # - id: foo
-      #   uses: gencarnacao-cw/test-action@v9
-      #   with:
-      #     context: ${{ toJSON(github) }}
-  bash-script:
+  validation-script:
       runs-on: ubuntu-latest
       if: ${{ github.event_name == 'pull_request' }}
       steps:
-        - name: Print PR title
-          run: echo ${{ github.event }}
-
+        - name: Check PR title for Jira issue number
+          run: |
+            set +e
+            JIRA=$(printf '%q' ${{ github.event.pull_request.title }} | grep -o "GRUB-[0-9]\{4,5\}")
+            if [[ $? == 1 ]]; then
+              echo "::error::PR Title does not include JIRA issue number!"
+              exit 1
+            else
+              echo "::notice::Detected JIRA issue ${JIRA}"
+            fi
