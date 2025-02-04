@@ -1,7 +1,6 @@
-name: Check PR title contains Jira issue ID
 on:
   pull_request:
-    types: [synchronize, opened, reopened, edited]
+    types: [opened, edited]
 
 jobs:
   bash-script:
