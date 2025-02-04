@@ -10,4 +10,9 @@ jobs:
       steps:
         - name: Print the PR title
           run: |
-            echo ${{ github.event.pull_request.title }} | grep -o "GRUB-[0-9]\{4,5\}" || echo "::error::PR Title does not include JIRA issue number\!" && exit 1
+            set +e
+            printf '%q' ${{ github.event.pull_request.title }} | grep -o "GRUB-[0-9]\{4,5\}"
+            if [[ $? == 1 ]]; then
+              echo "::error::PR Title does not include JIRA issue number!"
+              exit 1
+            fi
