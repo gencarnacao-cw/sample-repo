@@ -1,9 +1,10 @@
+name: Validate pull request title
 on:
   pull_request:
     types: [opened, edited]
 
 jobs:
-  bash-script:
+  validation-script:
       runs-on: ubuntu-latest
       if: ${{ github.event_name == 'pull_request' }}
       steps:
