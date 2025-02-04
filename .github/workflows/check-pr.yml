@@ -18,5 +18,6 @@ jobs:
       if: ${{ github.event_name == 'pull_request' }}
       steps:
         - name: Print the PR title
-          run: echo ${{ github.event.pull_request.title }}
+          run: echo ${{ github.event.pull_request.title }} | grep -o "GRUB-\d\{4,5\}"
+
 
