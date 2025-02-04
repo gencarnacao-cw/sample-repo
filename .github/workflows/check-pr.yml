@@ -19,6 +19,6 @@ jobs:
       steps:
         - name: Print the PR title
           run: |
-            echo ${{ github.event.pull_request.title }} | grep -o "GRUB-\d\{4,5\}" || echo "::error PR Title does not include JIRA issue number!" && exit 1
+            echo ${{ github.event.pull_request.title }} | grep -o "GRUB-\d\{4,5\}" || echo "::error::PR Title does not include JIRA issue number!" && exit 1
 
 
