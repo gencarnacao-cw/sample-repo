@@ -9,7 +9,14 @@ jobs:
     name: A job to say hello
     steps:
       - uses: actions/checkout@v4
-      - id: foo
-        uses: gencarnacao-cw/test-action@v9
-        with:
-          context: ${{ toJSON(github) }}
+      # - id: foo
+      #   uses: gencarnacao-cw/test-action@v9
+      #   with:
+      #     context: ${{ toJSON(github) }}
+  bash-script:
+      runs-on: ubuntu-latest
+      if: ${{ github.event_name == 'pull_request' }}
+      steps:
+        - name: Print PR title
+          run: echo ${{ github.event }}
+
