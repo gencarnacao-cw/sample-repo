@@ -17,6 +17,6 @@ jobs:
       runs-on: ubuntu-latest
       if: ${{ github.event_name == 'pull_request' }}
       steps:
-        - name: Print PR title
+        - name: Print the PR title
           run: echo ${{ github.event }}
 
