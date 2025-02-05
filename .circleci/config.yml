@@ -10,7 +10,7 @@ jobs:
       - image: cimg/base:current
     parameters:
       msg: 
-      type: string
+        type: string
     steps:
       - checkout
       - run:
