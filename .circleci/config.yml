@@ -36,9 +36,9 @@ workflows:
           filters:
             tags:
               only: /v.*/
-      - release-thing:
-          requires: 
-            - deploy-thing
-          filters:
-            tags:
-              only: /v.*/
+      # - release-thing:
+      #     requires: 
+      #       - deploy-thing
+      #     filters:
+      #       tags:
+      #         only: /v.*/
