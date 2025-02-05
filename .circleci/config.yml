@@ -21,7 +21,8 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
-      - run: circleci run release log --environment-name=acceptance --component-name=microservice-1 --target-version=${CIRCLE_TAG}
+      # - run: circleci run release log --environment-name=acceptance --component-name=microservice-1 --target-version=${CIRCLE_TAG}
+      - run: git log
   release-thing:
     type: release
     plan_name: release-thing-acceptance
