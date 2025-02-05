@@ -33,3 +33,5 @@ workflows:
     jobs:
       - deploy-thing
       - release-thing
+          requires:
+            - deploy-thing
