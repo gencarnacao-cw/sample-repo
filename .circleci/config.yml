@@ -21,10 +21,7 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
-      - run: circleci run release plan --environment-name=acceptance --component-name=microservice-1 --target-version=v1.0.0 release-thing-acceptance
-  release-thing:
-    type: release
-    plan_name: release-thing-acceptance
+      - run: circleci run release plan --environment-name=acceptance --component-name=microservice-1 --target-version=v${CIRCLECI_TAG} release-thing-acceptance
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
 workflows:
@@ -32,6 +29,3 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - deploy-thing
-      - release-thing
-          requires:
-            - deploy-thing
