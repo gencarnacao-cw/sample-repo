@@ -18,10 +18,10 @@ jobs:
     steps:
       # Checkout the code as the first step.
       - checkout
+      - run: circleci run release plan --environment-name=acceptance --component-name=microservice-1 --target-version=${CIRCLE_TAG} release-thing-acceptance
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
-      - run: circleci run release plan --environment-name=acceptance --component-name=microservice-1 --target-version=v${CIRCLE_TAG} release-thing-acceptance
   release-thing:
     type: release
     plan_name: release-thing-acceptance
