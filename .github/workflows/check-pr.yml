@@ -4,14 +4,19 @@ on:
     types: [synchronize, opened, reopened, edited]
 
 jobs:
-  check-pr-title:
+  hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to check the PR has a nice name
+    name: A job to say hello
     steps:
-      - name: Trigger CircleCI Pipeline
-        id: pr-name-checker
-        uses: gencarnacao/test-action@1.0.0
-        with:
-          some-var: "foobar"
-      - name: Peek the output
-        run: echo "Output was ${{ steps.pr-name-checker.outputs.out-var }}"
+      - uses: actions/checkout@v4
+      # - id: foo
+      #   uses: gencarnacao-cw/test-action@v9
+      #   with:
+      #     context: ${{ toJSON(github) }}
+  bash-script:
+      runs-on: ubuntu-latest
+      if: ${{ github.event_name == 'pull_request' }}
+      steps:
+        - name: Print PR title
+          run: echo ${{ github.event }}
+
